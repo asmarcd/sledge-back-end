@@ -15,6 +15,7 @@ const db = mysql.createConnection({
     database: 'ticket_tracker'
 });
 
+// Move this into routes file once ready
 app.post('/create_user', (req, res) => {
     res.json(req.body);
 
