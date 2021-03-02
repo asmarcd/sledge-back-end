@@ -9,9 +9,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
-    user: 'chrisasmar',
+    user: process.env.SERVER_USER,
     host: 'localhost',
-    password: '@Ca5457573!',
+    password: process.env.SERVER_PASSWORD,
     database: 'ticket_tracker'
 });
 
