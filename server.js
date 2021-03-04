@@ -1,23 +1,25 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-const mysql = require('mysql2');
-require('dotenv').config();
+
+const morgan = require('morgan');
+app.use(morgan('short'));
 
 const PORT = process.env.PORT || 3001
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const db = mysql.createConnection({
-    user: process.env.SERVER_USER,
-    host: 'localhost',
-    password: process.env.SERVER_PASSWORD,
-    database: 'ticket_tracker'
+app.get('/', (req, res) => {
+    res.send('Crush those bugs!')
 });
 
-const routes = require('./controllers/');
-app.use(routes);
+const ticketRoutes = require('./routes/Tickets');
+const userRoutes = require('./routes/User');
+
+app.use(ticketRoutes);
+app.use(userRoutes);
 
 app.listen(PORT, ()=> {
     console.log(`Server Running on Port ${PORT}`)
-});
+})
