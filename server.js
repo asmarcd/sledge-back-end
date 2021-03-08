@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const db = require('./models');
 
 const morgan = require('morgan');
 app.use(morgan('short'));
@@ -15,11 +16,13 @@ app.get('/', (req, res) => {
 });
 
 const ticketRoutes = require('./routes/Tickets');
-const userRoutes = require('./routes/User');
-
 app.use(ticketRoutes);
+
+const userRoutes = require('./routes/User');
 app.use(userRoutes);
 
-app.listen(PORT, ()=> {
-    console.log(`Server Running on Port ${PORT}`)
+db.sequelize.sync({ force:false }).then(() => {
+    app.listen(PORT, ()=> {
+        console.log(`Server Running on Port ${PORT}`)
+    })
 })
