@@ -3,7 +3,7 @@ const moment= require('moment');
 module.exports = function (sequelize, DataTypes) {
     const Ticket = sequelize.define("Ticket", {
         id: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
