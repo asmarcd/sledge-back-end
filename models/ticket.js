@@ -24,7 +24,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         priority: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             defaultValue: 0
+        },
+        owner: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         },
         created_at: {
             type: DataTypes.DATE,
