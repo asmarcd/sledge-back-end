@@ -1,5 +1,3 @@
-const moment= require('moment');
-
 module.exports = function (sequelize, DataTypes) {
     const Ticket = sequelize.define("Ticket", {
         id: {
@@ -30,18 +28,6 @@ module.exports = function (sequelize, DataTypes) {
         owner: {
             type: DataTypes.INTEGER,
             allowNull: true
-        },
-        created_at: {
-            type: DataTypes.DATE,
-            get() {
-                return moment(this.getDataValue('created_at')).format('DD/MM/YYYY h:mm:ss');
-            }
-        },
-        updated_at: {
-            type: DataTypes.DATE,
-            get() {
-                return moment(this.getDataValue('updated_at')).format('DD/MM/YYYY h:mm:ss');
-            }
         }
     })
     return Ticket;
