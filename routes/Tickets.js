@@ -8,7 +8,7 @@ const db = require('../models');
 router.get('/tickets', (req, res) => {
     db.Ticket.findAll()
         .then(allTickets => {
-            res.send(allTickets)
+            res.json(allTickets)
         })
 });
 
