@@ -17,6 +17,7 @@ router.post('/tickets', async (req, res) => {
     await db.Ticket.create(
         {
             title: req.body.title,
+            status: req.body.status,
             label: req.body.label,
             description: req.body.description,
             priorty: req.body.priorty,
