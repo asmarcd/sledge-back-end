@@ -12,7 +12,11 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        type: {
+        status: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        label: {
             type: DataTypes.STRING,
             allowNull: true
         },
