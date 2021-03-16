@@ -24,6 +24,9 @@ app.use(ticketRoutes);
 const userRoutes = require('./routes/User');
 app.use(userRoutes);
 
+const labelRoutes = require('./routes/Label');
+app.use(labelRoutes);
+
 db.sequelize.sync({ force:false }).then(() => {
     app.listen(PORT, ()=> {
         console.log(`Server Running on Port ${PORT}`)
