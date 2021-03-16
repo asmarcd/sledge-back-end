@@ -21,3 +21,5 @@ router.post('/labels', async (req, res) => {
     )
     await res.status(200).send("New Label Added")
 });
+
+module.exports = router;
