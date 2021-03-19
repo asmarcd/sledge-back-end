@@ -14,7 +14,6 @@ router.get('/tickets', (req, res) => {
 
 // create a new ticket
 router.post('/tickets', async (req, res) => {
-    console.log(req.body)
     await db.Ticket.create(
         {
             title: req.body.title,
