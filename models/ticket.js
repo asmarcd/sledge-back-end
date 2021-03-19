@@ -25,9 +25,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
         priority: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
+            type: DataTypes.STRING,
+            allowNull: false
         },
         owner: {
             type: DataTypes.INTEGER,

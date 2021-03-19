@@ -14,13 +14,14 @@ router.get('/tickets', (req, res) => {
 
 // create a new ticket
 router.post('/tickets', async (req, res) => {
+    console.log(req.body)
     await db.Ticket.create(
         {
             title: req.body.title,
             status: req.body.status,
             label: req.body.label,
             description: req.body.description,
-            priorty: req.body.priorty,
+            priority: req.body.priority,
             owner: req.body.owner
         }
     )
@@ -43,7 +44,7 @@ router.put('/tickets/:id', (req, res) => {
             status: req.body.status,
             label: req.body.label,
             description: req.body.description,
-            priorty: req.body.priorty,
+            priority: req.body.priority,
             owner: req.body.owner
         },
         {
