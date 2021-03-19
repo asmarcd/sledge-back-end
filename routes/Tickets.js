@@ -40,7 +40,8 @@ router.put('/tickets/:id', (req, res) => {
     db.Ticket.update(
         {
             title: req.body.title,
-            type: req.body.type,
+            status: req.body.status,
+            label: req.body.label,
             description: req.body.description,
             priorty: req.body.priorty,
             owner: req.body.owner
