@@ -28,7 +28,7 @@ router.post('/users', async (req, res) => {
     await db.User.create(
         {
             name: req.body.name,
-            username: req.body.username,
+            email: req.body.email,
             password: req.body.password
         }
     )
@@ -40,7 +40,7 @@ router.put('/users/:id', (req, res) => {
     db.User.update(
         {
             name: req.body.name,
-            username: req.body.username,
+            email: req.body.email,
             password: req.body.password
         },
         {

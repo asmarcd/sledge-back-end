@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        username: {
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
