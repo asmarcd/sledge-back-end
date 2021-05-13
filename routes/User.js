@@ -27,10 +27,7 @@ router.get('/users/:id', (req, res) => {
 // create a new user
 router.post('/users', async (req, res) => {
     try {
-        const salt = await bcrypt.genSalt()
-        const hashedPassword = await bcrypt.hash(req.body.password, salt)
-        console.log(salt)
-        console.log(hashedPassword)
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
         db.User.create(
             {
                 name: req.body.name,
@@ -42,7 +39,33 @@ router.post('/users', async (req, res) => {
     } catch {
         res.status(500).send();
     }
-    
+});
+
+// user login
+// tutorial i watched said this should be a POST request, but I'm not sure why it would be, since I'm not creating anything new.
+// when i do it as a get request, it hits the get request above and thinks that "login" is the user ID, so it's not that. I could rewrite it, but I need to explore some other tutorials.
+router.get('/users/login', async (req, res) => {
+    const user = db.User.findOne(
+        {
+            where: {
+                email: req.body.email
+            }
+        }
+    )
+    if (user == null) {
+        return res.status(400).send("Cannot find user")
+    }
+    try {
+        console.log(user.password)
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            res.send('success')
+        } else {
+            res.send('incorrect password')
+        }
+    } catch {
+        res.status(500).send();
+    }
+
 });
 
 // update existing user
